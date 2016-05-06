@@ -50,7 +50,7 @@ import { DropdownToggleDirective, DropdownDirective } from 'ng2-bootstrap/ng2-bo
                                 <i class="fa fa-cogs" aria-hidden="true"></i></a> 
                             <ul class="dropdown-menu" aria-labelledby="simple-dropdown">
                                 <li>
-                                    <a  [routerLink]="['OwnerDetails', {id: id}]">
+                                    <a  (click)="openProfile()" id="profile">
                                         <i class="fa fa-user" aria-hidden="true"></i>
                                         Profile
                                     </a>
@@ -76,14 +76,15 @@ import { DropdownToggleDirective, DropdownDirective } from 'ng2-bootstrap/ng2-bo
 })
 export class NavbarComponent implements OnInit {
     
-    token: string;
-    id: string;
     @Output('logout') logoutApp = new EventEmitter();;
     
     constructor(private router: Router) { }
 
-    ngOnInit() { 
-        this.id = JSON.parse(localStorage.getItem('profile')).username;
+    ngOnInit() { }
+    
+    openProfile() {
+        let id = JSON.parse(localStorage.getItem('profile')).username;
+        this.router.navigate(['OwnerDetails', {id: id}]);
     }
     
     showMenu(): boolean {
