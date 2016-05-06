@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <base href="/app/">
+    <meta charset="UTF-8">
+    <title>Angular2 playground</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+</head>
+
+<body>
+    <app>Loading...</app>
+</body>
+
+<!-- ES6-related imports -->
+<script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+<script src="node_modules/es6-shim/es6-shim.min.js"></script>
+<script src="node_modules/systemjs/dist/system.js"></script>
+<script>
+    //configure system loader
+    System.config({
+        defaultJSExtensions: true,
+        packages: {
+            format: 'register'
+        },
+        map: {
+            'moment': 'node_modules/moment/moment',
+            'rxjs': 'node_modules/rxjs',
+            'ng2-bootstrap': 'node_modules/ng2-bootstrap/bundles'
+        }
+    });
+</script>
+<script src="node_modules/rxjs/bundles/Rx.js"></script>
+<script src="node_modules/angular2/bundles/angular2.js"></script>
+<script src="node_modules/angular2/bundles/http.js"></script>
+<script src="node_modules/angular2/bundles/router.js"></script>
+<script>
+    //bootstrap the Angular2 application
+    System.import('dist/bootstrap').catch(console.log.bind(console));
+</script>
+
+</html>
